@@ -1,180 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abundant Community</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
+    :root {
+      --main-green: #1c4025;
+      --background: #e6f0e6;
+      --text-dark: #1c4025;
+      --card-bg: #ffffff;
+      --card-shadow: rgba(0, 0, 0, 0.06);
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f7f9f7;
-      color: #1d2d1f;
-      line-height: 1.7;
-      scroll-behavior: smooth;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--text-dark);
     }
+
     header {
-      background: linear-gradient(#1c4025, #16351e);
-      color: white;
+      background-color: var(--main-green);
+      color: #fff;
+      padding: 1.5rem 2rem;
       text-align: center;
-      padding: 6rem 1rem 5rem;
-      position: relative;
     }
-    .logo {
-      width: 110px;
-      height: 110px;
-      background: white;
-      color: #1c4025;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin: 0 auto 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+
     header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
+      font-size: 2.2rem;
+      margin: 0;
+    }
+
+    section {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--main-green);
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 10px var(--card-shadow);
+    }
+
+    .stat-card h3 {
+      font-size: 1.8rem;
+      color: var(--main-green);
       margin-bottom: 0.5rem;
     }
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      color: #d8e6dc;
-    }
-    nav {
-      background-color: #21492c;
-      padding: 0.6rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #e5f0e8;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #9fe2af;
-    }
-    section {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      color: #1c4025;
-      margin-bottom: 1rem;
-      font-size: 1.9rem;
-      font-weight: 700;
-    }
-    p {
-      color: #2c3d2f;
+
+    .stat-card p {
       font-size: 1rem;
+      color: #2c3d2f;
       margin-bottom: 1rem;
     }
-    .contact {
-      text-align: center;
-      margin: 3rem 0;
-    }
-    .contact a {
-      display: inline-block;
-      background-color: #1c4025;
-      color: #fff;
-      padding: 0.8rem 1.6rem;
-      border-radius: 6px;
+
+    .stat-card a {
+      color: #16351e;
+      font-weight: 600;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
     }
-    .contact a:hover {
-      background-color: #16351e;
+
+    .stat-card a:hover {
+      text-decoration: underline;
     }
-    footer {
-      background-color: #21492c;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #d8e6dc;
-      margin-top: 3rem;
-    }
-    img.placeholder {
+
+    img.diagram {
       width: 100%;
-      border-radius: 8px;
-      margin: 1.5rem 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      max-width: 800px;
+      display: block;
+      margin: 2rem auto;
+      background-color: transparent;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.7rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .stat-card h3 {
+        font-size: 1.5rem;
+      }
+
+      .stat-card p {
+        font-size: 0.95rem;
+      }
+
+      section {
+        padding: 1.5rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="logo">Logo</div>
     <h1>Abundant Community</h1>
-    <p>Removing barriers for people with complex needs by unlocking Houston’s hidden social and relational resources.</p>
   </header>
 
-  <nav>
-    <a href="#mission">Mission</a>
-    <a href="#focus">Current Focus</a>
-    <a href="#future">Future Vision</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <section id="problem">
+    <h2>The Problem</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>11–36%</h3>
+        <p>Experience homelessness during transition to adulthood</p>
+        <a href="https://ajph.aphapublications.org/doi/10.2105/AJPH.2013.301455" target="_blank">Read study</a>
+      </div>
+      <div class="stat-card">
+        <h3>31–36%</h3>
+        <p>Had at least one homeless episode by age 26 (Midwest Study)</p>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3969135/" target="_blank">Read study</a>
+      </div>
+      <div class="stat-card">
+        <h3>~19,000–24,000</h3>
+        <p>Age out of foster care in the U.S. annually</p>
+        <a href="https://www.aecf.org/blog/what-happens-to-youth-aging-out-of-foster-care" target="_blank">Read AECF</a><br>
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7518090/" target="_blank">Research article</a>
+      </div>
+    </div>
+  </section>
 
   <section id="mission">
     <h2>Our Mission</h2>
-    <p>Abundant Community is a 501(c)(3) nonprofit dedicated to helping individuals with complex needs gain direct access to the untapped social and relational resources of Houston. By connecting people to networks of care and opportunity, we aim to remove barriers that prevent them from thriving.</p>
-    <img src="network-diagram.png.jpg" alt="Abundant Community Network" style="max-width:100%; height:auto;">
+    <p>Abundant Community exists to ensure youth aging out of foster care have the resources, support, and opportunities they need to thrive. We believe in building systems of abundance, not scarcity, through partnerships and community-driven initiatives.</p>
   </section>
 
-  <section id="focus">
+  <section id="current-focus">
     <h2>Current Focus</h2>
-    <p>Our first target community is youth aging out of foster care. According to multiple studies, 31–46% of these young adults experience homelessness at least once by age 26. Abundant Community seeks to change that outcome by providing relationships, support, and connection.</p>
-    <img class="placeholder" src="https://via.placeholder.com/900x400.png?text=Partnership+Diagram" alt="Partnership diagram">
+    <img src="diagram.png" alt="How we work with partners" class="diagram">
+    <p>We are actively building collaborations with housing organizations, educational programs, and job training networks to create a robust support web for youth exiting foster care.</p>
   </section>
 
-  <section id="future">
-    <h2>Future Vision</h2>
-    <p>In the future, we plan to expand our work to directly support those currently experiencing homelessness, helping them access both tangible resources and sustainable relationships that lead to long-term stability.</p>
-    <img class="placeholder" src="https://via.placeholder.com/900x400.png?text=Future+Goals" alt="Future goals graphic">
+  <section id="future-focus">
+    <h2>Future Focus</h2>
+    <p>In the coming year, we aim to expand our pilot programs nationwide, develop data-driven intervention models, and advocate for systemic policy reforms that address the long-term needs of aging-out youth.</p>
   </section>
-
-  <section id="contact" class="contact">
-    <a href="mailto:twgroten@gmail.com">Contact Us</a>
-  </section>
-
-  <footer>
-    &copy; 2025 Abundant Community | 501(c)(3) Nonprofit (in formation)
-  </footer>
-
-  <script>
-    // Scroll animation
-    const sections = document.querySelectorAll('section');
-    const revealOnScroll = () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add('visible');
-        }
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-  </script>
-
 </body>
 </html>
